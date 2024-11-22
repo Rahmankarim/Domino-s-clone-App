@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "components/Footer.jsx", "Screens/Home.jsx", "Screens/Item.jsx", "Screens/Cart.jsx", "Screens/CardInfo.jsx", "Screens/MyInfo.jsx", "Screens/OrderPlaced.jsx", "Screens/PaymentMethods.jsx"  ]
 }

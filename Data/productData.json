@@ -1,0 +1,257 @@
+[
+    {
+      "id": 1,
+      "name": "Chicken Seekh Kebab",
+      "category": "Pizzas",
+      "image": "https://www.dominos.com.pk/images/b2006a70-9cda-11ef-9ba0-8f6ccd20db1e-SeekhKabab-HandTossedTop2_variant_0-2024-11-07073417.jpg",
+      "description": "Grilled Chicken Seekh Kebab, Green chillies & Onions topped with Ranch Sauce",
+      "price": 420,
+      "addons": {
+        "size": [
+          { "option": "Small", "price": 420 },
+          { "option": "Medium", "price": 470 },
+          { "option": "Large", "price": 520 }
+        ],
+        "crust": [
+          { "option": "Thin", "price": 0 },
+          { "option": "Thick", "price": 30 },
+          { "option": "Cheese Stuffed", "price": 50 }
+        ],
+        "sauce": [
+          { "option": "BBQ", "price": 0 },
+          { "option": "Ranch", "price": 0 },
+          { "option": "Garlic", "price": 0 },
+          { "option": "Hot", "price": 0 }
+        ],
+        "extraToppings": [
+          { "option": "None", "price": 0 },
+          { "option": "Olives", "price": 20 },
+          { "option": "Jalapenos", "price": 30 },
+          { "option": "Mushrooms", "price": 25 },
+          { "option": "Cheese", "price": 50 },
+          { "option": "Pepperoni", "price": 40 }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Hawaiian Chicken",
+      "category": "Pizzas",
+      "image": "https://www.dominos.com.pk/images/74893f50-9cda-11ef-ad5d-6d48338cfab8-HawaiianChicken-HandTossedTopcopy_variant_0-2024-11-07073234.jpg",
+      "description": "Chicken Chunks and Pineapples",
+      "price": 420,
+      "addons": {
+        "size": [
+          { "option": "Small", "price": 420 },
+          { "option": "Medium", "price": 470 },
+          { "option": "Large", "price": 520 }
+        ],
+        "crust": [
+          { "option": "Thin", "price": 0 },
+          { "option": "Thick", "price": 30 },
+          { "option": "Cheese Stuffed", "price": 50 }
+        ],
+        "sauce": [
+          { "option": "BBQ", "price": 0 },
+          { "option": "Ranch", "price": 0 },
+          { "option": "Garlic", "price": 0 },
+          { "option": "Hot", "price": 0 }
+        ],
+        "extraToppings": [
+          { "option": "None", "price": 0 },
+          { "option": "Olives", "price": 20 },
+          { "option": "Pineapple", "price": 30 },
+          { "option": "Mushrooms", "price": 25 },
+          { "option": "Cheese", "price": 50 }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Super Cheese",
+      "category": "Pizzas",
+      "image": "https://www.dominos.com.pk/images/b3bd35a0-9cda-11ef-a9ad-13554758a2ab-SuperCheese-HandTossedTop_variant_0-2024-11-07073420.jpg",
+      "description": "Cheese and cheese with some more cheese",
+      "price": 420,
+      "addons": {
+        "size": [
+          { "option": "Small", "price": 420 },
+          { "option": "Medium", "price": 470 },
+          { "option": "Large", "price": 520 }
+        ],
+        "crust": [
+          { "option": "Thin", "price": 0 },
+          { "option": "Thick", "price": 30 },
+          { "option": "Cheese Stuffed", "price": 50 }
+        ],
+        "sauce": [
+          { "option": "None", "price": 0 },
+          { "option": "BBQ", "price": 0 },
+          { "option": "Ranch", "price": 0 },
+          { "option": "Garlic", "price": 0 },
+          { "option": "Hot", "price": 0 }
+        ],
+        "extraToppings": [
+          { "option": "None", "price": 0 },
+          { "option": "Cheese", "price": 50 },
+          { "option": "Extra Cheese", "price": 75 },
+          { "option": "Triple Cheese", "price": 100 }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "BBQ Chicken",
+      "category": "Pizzas",
+      "image": "https://www.dominos.com.pk/images/74893f50-9cda-11ef-ad5d-6d48338cfab8-BBQChicken_variant_0-2024-11-07073234.jpg",
+      "description": "Spicy chicken chunks and onions topped with BBQ sauce",
+      "price": 420,
+      "addons": {
+        "size": [
+          { "option": "Small", "price": 420 },
+          { "option": "Medium", "price": 470 },
+          { "option": "Large", "price": 520 }
+        ],
+        "crust": [
+          { "option": "Thin", "price": 0 },
+          { "option": "Thick", "price": 30 },
+          { "option": "Cheese Stuffed", "price": 50 }
+        ],
+        "sauce": [
+          { "option": "BBQ", "price": 0 },
+          { "option": "Ranch", "price": 0 },
+          { "option": "Garlic", "price": 0 },
+          { "option": "Hot", "price": 0 }
+        ],
+        "extraToppings": [
+          { "option": "None", "price": 0 },
+          { "option": "Onions", "price": 20 },
+          { "option": "Cheese", "price": 50 },
+          { "option": "Jalapenos", "price": 30 }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Garlic Bread",
+      "category": "Sides",
+      "image": "https://www.dominos.com.pk/images/561f7ee0-9c0c-11ef-8241-d70815871548-Cheesy-Garlic-Bread_variant_0-2024-11-06065707.jpg",
+      "description": "Crispy and buttery garlic bread",
+      "price": 119,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 119 },
+          { "option": "500ml", "price": 139 },
+          { "option": "1.5L", "price": 169 }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Chicken and Chips",
+      "category": "Sides",
+      "image": "https://www.dominos.com.pk/images/561fcd00-9c0c-11ef-9b0d-ed4b7d34116d-Chicken-and-Chips_variant_0-2024-11-06065707.jpg",
+      "description": "Enjoy 5 strips of our oven-baked crispy chicken with fries combo.",
+      "price": 119,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 119 },
+          { "option": "500ml", "price": 139 },
+          { "option": "1.5L", "price": 169 }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "Pepsi",
+      "category": "Drinks",
+      "image": "https://www.dominos.com.pk/images/4c9a0e80-9c0c-11ef-bff6-bf27d5d23f5e-Pepsi_variant_0-2024-11-06065651.jpg",
+      "description": "Chilled soft drink",
+      "price": 119,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 119 },
+          { "option": "500ml", "price": 139 },
+          { "option": "1.5L", "price": 169 }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "7UP ",
+      "category": "Drinks",
+      "image": "https://www.dominos.com.pk/images/58ef67c0-9c0c-11ef-a781-9112538a4c9a-7up_variant_0-2024-11-06065711.jpg",
+      "description": "7UP ",
+      "price": 119,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 119 },
+          { "option": "500ml", "price": 150 },
+          { "option": "1.5L", "price": 200 }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "Choco Bread Twist",
+      "category": "Desserts",
+      "image": "https://www.dominos.com.pk/images/561fcd00-9c0c-11ef-9a76-1f6f1b37f3c8-Choco-Bread-Twist_variant_0-2024-11-06065707.jpg",
+      "description": "Chocolate-filled twist",
+      "price": 119,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 119 },
+          { "option": "500ml", "price": 139 },
+          { "option": "1.5L", "price": 169 }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "name": "Cinnastix​",
+      "category": "Desserts",
+      "image": "https://www.dominos.com.pk/images/58efb5e0-9c0c-11ef-bba4-793477daa05d-Cinnastix_variant_0-2024-11-06065711.jpg",
+      "description": "freshly-baked bread topped with cinnamon",
+      "price": 599,
+      "addons": {
+        "size": [
+          { "option": "345ml", "price": 599 },
+          { "option": "500ml", "price": 1000 },
+          { "option": "1.5L", "price": 1500 }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "Meltz Smokey Chicken Tikka​",
+      "category": "Meltz",
+      "image": "https://www.dominos.com.pk/images/58efb5e0-9c0c-11ef-bba4-793477daa05d-Chiken-Tikka_variant_0-2024-11-06065711.jpg",
+      "description": "Our signature Thin N Crispy crust, folded & packed with tikka chunks, onions, green pepper & chipotle sauce.",
+      "price": 420,
+      "addons": {
+        "size": [
+          { "option": "Small", "price": 420 },
+          { "option": "Medium", "price": 470 },
+          { "option": "Large", "price": 520 }
+        ],
+        "crust": [
+          { "option": "Thin", "price": 0 },
+          { "option": "Thick", "price": 30 },
+          { "option": "Cheese Stuffed", "price": 50 }
+        ],
+        "sauce": [
+          { "option": "BBQ", "price": 0 },
+          { "option": "Ranch", "price": 0 },
+          { "option": "Garlic", "price": 0 },
+          { "option": "Hot", "price": 0 }
+        ],
+        "extraToppings": [
+          { "option": "None", "price": 0 },
+          { "option": "Onions", "price": 20 },
+          { "option": "Cheese", "price": 50 },
+          { "option": "Jalapenos", "price": 30 }
+        ]
+      }
+    }
+  ]
+  
