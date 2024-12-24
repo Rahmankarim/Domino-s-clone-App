@@ -1,22 +1,51 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useFavorites } from './FavoritesContext.tsx';
 
 const ImageCardGrid = ({ data, onItemClick }) => {
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.card} onPress={() => onItemClick(item.id)}>
-      {item.image ? (
-        <Image
-          source={{ uri: item.image }}
-          style={styles.image}
-          resizeMode="cover"
-          defaultSource={require('../../assets/images/logo.png')}  
-        />
-      ) : (
-        <View style={styles.imagePlaceholder} />
-      )}
+  const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
-      {item.name && <Text style={styles.name}>{item.name}</Text>}
-    </TouchableOpacity>
+  const toggleFavorite = (item) => {
+    if (isFavorite(item.id)) {
+      removeFavorite(item.id);
+    } else {
+      addFavorite({
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        dateAdded: new Date().toISOString()
+      });
+    }
+  };
+
+  const renderItem = ({ item }) => (
+    <View style={styles.card}>
+      <TouchableOpacity onPress={() => onItemClick(item.id)}>
+        {item.image ? (
+          <Image
+            source={{ uri: item.image }}
+            style={styles.image}
+            resizeMode="cover"
+            defaultSource={require('../../assets/images/logo.png')}
+          />
+        ) : (
+          <View style={styles.imagePlaceholder} />
+        )}
+        {item.name && <Text style={styles.name}>{item.name}</Text>}
+      </TouchableOpacity>
+      
+      <TouchableOpacity
+        style={styles.heartButton}
+        onPress={() => toggleFavorite(item)}
+      >
+        <MaterialIcons
+          name={isFavorite(item.id) ? "favorite" : "favorite-border"}
+          size={24}
+          color={isFavorite(item.id) ? "#ff0000" : "#000000"}
+        />
+      </TouchableOpacity>
+    </View>
   );
 
   return (
@@ -33,18 +62,19 @@ const styles = StyleSheet.create({
   card: {
     margin: 10,
     alignItems: 'center',
-    flex: 1, 
+    flex: 1,
+    position: 'relative',
   },
   image: {
     width: 150,
     height: 150,
     borderRadius: 10,
-    marginBottom: 10, 
+    marginBottom: 10,
   },
   imagePlaceholder: {
     width: 150,
     height: 150,
-    backgroundColor: '#ddd', 
+    backgroundColor: '#ddd',
     borderRadius: 10,
     marginBottom: 10,
   },
@@ -54,6 +84,14 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
   },
+  heartButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 15,
+    padding: 5,
+  }
 });
 
 export default ImageCardGrid;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import productData from '../../Data/productData.json';
 
 const SlidesImageList = ({ onItemClick }) => {
-
   if (!productData || !Array.isArray(productData)) {
     return <Text>No product data available</Text>;
   }
@@ -12,25 +11,24 @@ const SlidesImageList = ({ onItemClick }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
-        {slides.length > 0 ? (
-          slides.map((item) => (
-            <TouchableOpacity 
-              key={item.id} 
-              style={styles.productContainer} 
-              onPress={() => onItemClick(item.id)} // Trigger onItemClick with item id
-            >
-              <Image 
-                source={{ uri: item.image }} 
-                style={styles.productImage} 
-              />
-              <Text style={styles.productTitle}>{item.name}</Text>
-            </TouchableOpacity>
-          ))
-        ) : (
-          <Text>No items found</Text>  
+      <FlatList
+        horizontal
+        data={slides}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.productContainer}
+            onPress={() => onItemClick(item.id)}
+          >
+            <Image
+              source={{ uri: item.image }}
+              style={styles.productImage}
+            />
+            <Text style={styles.productTitle}>{item.name}</Text>
+          </TouchableOpacity>
         )}
-      </ScrollView>
+        contentContainerStyle={styles.scrollContainer}
+      />
     </View>
   );
 };
@@ -47,12 +45,12 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     alignItems: 'center',
-    marginRight: 20,  
+    marginRight: 20,
   },
   productImage: {
     width: 100,
     height: 100,
-    borderRadius: 50,  
+    borderRadius: 50,
     marginBottom: 10,
   },
   productTitle: {
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     textAlign: 'center',
-  },
+  }
 });
 
 export default SlidesImageList;

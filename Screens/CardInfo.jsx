@@ -12,7 +12,6 @@ const CardInfo = ({ route }) => {
   const [securityCode, setSecurityCode] = useState("");
 
   const handlePay = () => {
-    // Alert.alert("Payment Submitted", `Amount: Rs.${total}`);
     navigation.navigate('OrderPlaced');
   };
 

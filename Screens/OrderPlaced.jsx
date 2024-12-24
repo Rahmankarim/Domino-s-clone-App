@@ -6,7 +6,7 @@ const OrderPlaced = () => {
   const navigation = useNavigation();
 
   const handleContinueShopping = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('Home');
   };
 
   return (

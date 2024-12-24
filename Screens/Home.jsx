@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import BannerSlider from "../components/HomePageComponents/bannerSlider";
 import ImageCardGrid from "../components/HomePageComponents/ImageCardGrid";
@@ -10,43 +10,86 @@ import DessertImageList from "../components/HomePageComponents/DessetImageList";
 import ColdImageList from "../components/HomePageComponents/ColdImageList";
 import EndofPage from "../components/EndofPage";
 import ProductData from "../Data/productData.json";
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState([]);
   const [cardListData, setCardListData] = useState(ProductData);  
-
   const navigation = useNavigation();
 
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/Rahmankarim/Domino-sData/main/DominosData.json')
-    .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         setCardData(data);
-        setLoading(false); 
+        setLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error fetching data:', error);
-        setLoading(false); 
+        setLoading(false);
       });
-  
-    }, []);
+  }, []);
 
   const filterCategory = (category) => {
     return cardData.filter(item => item.category === category);
   };
 
   const handleItemClick = (itemId) => {
-    const item = cardData.find((product) => product.id === itemId);
+    const item = cardData.find(product => product.id === itemId);
     if (item) {
       navigation.navigate('Item', { itemId: item.id, products: cardData });
     }
   };
+
   const handleItemClickList = (itemId) => {
-    const item = cardListData.find((product) => product.id === itemId);
+    const item = cardListData.find(product => product.id === itemId);
     if (item) {
       navigation.navigate('Item', { itemId: item.id, products: cardListData });
     }
   };
+
+  const sections = [
+    { type: 'header', data: [null] },
+    { type: 'banner', data: [null] },
+    { type: 'welcome', data: [null] },
+    { type: 'category', title: 'Pizzas', horizontalList: PizzaImageList, data: filterCategory("Pizzas") },
+    { type: 'category', title: 'Sides', horizontalList: SlidesImageList, data: filterCategory("Sides") },
+    { type: 'category', title: 'Meltz', horizontalList: MiltzImageList, data: filterCategory("Meltz") },
+    { type: 'category', title: 'Desserts', horizontalList: DessertImageList, data: filterCategory("Desserts") },
+    { type: 'category', title: 'Drinks', horizontalList: ColdImageList, data: filterCategory("Drinks") },
+    { type: 'footer', data: [null] }
+  ];
+
+  const renderItem = ({ item, index }) => {
+    const section = sections[index];
+
+    switch (section.type) {
+      case 'header':
+        return (
+          <View style={styles.header}>
+            <Image source={require('./../assets/images/logo.png')} style={styles.logo} />
+          </View>
+        );
+      case 'banner':
+        return <BannerSlider />;
+      case 'welcome':
+        return <Text style={styles.welcomeText}>Welcome to Domino's!</Text>;
+      case 'category':
+        const HorizontalList = section.horizontalList;
+        return (
+          <View>
+            <Text style={styles.PizzasText}>{section.title}</Text>
+            <HorizontalList onItemClick={handleItemClickList} />
+            <ImageCardGrid data={section.data} onItemClick={handleItemClick} />
+          </View>
+        );
+      case 'footer':
+        return <EndofPage />;
+      default:
+        return null;
+    }
+  };
+
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
@@ -56,56 +99,12 @@ const Home = () => {
   }
 
   return (
-    <ScrollView style={styles.container}> 
-      <View style={styles.header}>
-        <Image source={require('./../assets/images/logo.png')} style={styles.logo} />
-      </View>
-      <BannerSlider />
-      <Text style={styles.welcomeText}>Welcome to Domino's!</Text>
-
-      {/* Pizzas Section */}
-      <Text style={styles.PizzasText}>Pizzas</Text>
-      <PizzaImageList onItemClick={handleItemClickList} />
-      <ImageCardGrid 
-        data={filterCategory("Pizzas")} 
-        onItemClick={handleItemClick} 
-      /> 
-
-      {/* Sides Section */}
-      <Text style={styles.PizzasText}>Sides</Text>
-      <SlidesImageList onItemClick={handleItemClickList} />
-      <ImageCardGrid 
-        data={filterCategory("Sides")} 
-        onItemClick={handleItemClick} 
-      />
-
-      {/* Meltz Section */}
-      <Text style={styles.PizzasText}>Meltz</Text>
-      <MiltzImageList onItemClick={handleItemClickList} />
-      <ImageCardGrid 
-        data={filterCategory("Meltz")} 
-        onItemClick={handleItemClick} 
-      />
-
-      {/* Desserts Section */}
-      <Text style={styles.PizzasText}>Desserts</Text>
-      <DessertImageList onItemClick={handleItemClickList} />
-      <ImageCardGrid 
-        data={filterCategory("Desserts")} 
-        onItemClick={handleItemClick} 
-      />
-
-      {/* Drinks Section */}
-      <Text style={styles.PizzasText}>Drinks</Text>
-      <ColdImageList onItemClick={handleItemClickList} />
-      <ImageCardGrid 
-        data={filterCategory("Drinks")} 
-        onItemClick={handleItemClick} 
-      />
-
-      {/* End of Page Section */}
-      <EndofPage />
-    </ScrollView> 
+    <FlatList
+      style={styles.container}
+      data={sections}
+      renderItem={renderItem}
+      keyExtractor={(_, index) => index.toString()}
+    />
   );
 };
 
@@ -148,4 +147,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home; 
+export default Home;

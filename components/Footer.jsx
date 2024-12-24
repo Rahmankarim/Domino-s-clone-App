@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; // Correctly use useNavigation
-
+import { useNavigation } from '@react-navigation/native'; 
 const Footer= () => {
   const navigation = useNavigation();
 

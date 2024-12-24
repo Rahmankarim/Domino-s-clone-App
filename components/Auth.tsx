@@ -1,41 +1,48 @@
-import React, { useState } from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
-import { supabase } from '../services/supabaseClient';
-import { Button, Input } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react'
+import { Alert, StyleSheet, View, AppState } from 'react-native'
+import { supabase } from '../Lib/supabase'
+import { Button, Input } from '@rneui/themed'
+
+
+AppState.addEventListener('change', (state) => {
+  if (state === 'active') {
+    supabase.auth.startAutoRefresh()
+  } else {
+    supabase.auth.stopAutoRefresh()
+  }
+})
 
 export default function Auth() {
-  const navigation = useNavigation();
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState(false)
-  
-    async function signInWithEmail() {
-      setLoading(true)
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      })
-  
-      if (error) Alert.alert(error.message)
-      setLoading(false)
-    }
-  
-    async function signUpWithEmail() {
-      setLoading(true)
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      })
-  
-      if (error) Alert.alert(error.message)
-      if (!session) Alert.alert('Please check your inbox for email verification!')
-      setLoading(false)
-    }
-  
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function signInWithEmail() {
+    setLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+
+    if (error) Alert.alert(error.message)
+    setLoading(false)
+  }
+
+  async function signUpWithEmail() {
+    setLoading(true)
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    })
+
+    if (error) Alert.alert(error.message)
+    if (!session) Alert.alert('Please check your inbox for email verification!')
+    setLoading(false)
+  }
+
   return (
     <View style={styles.container}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
@@ -71,10 +78,7 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
     marginTop: 40,
-    margin:10,
     padding: 12,
   },
   verticallySpaced: {
